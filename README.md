@@ -49,7 +49,7 @@ Kopieren Sie die Implementierung aus Aufgabe1 in die [Aufgabe2](./Aufgabe2_Dispo
 
 **Auszahlung anpassen**
 1. Lassen Sie die Auszahlungsmethode der Bankkonten einen boolischen Wert zurückgeben. **'true'** wenn der Verfügungsrahmen ausreicht und **'false'** wenn das Geld für die Auszahlung oder überweisung nicht ausreicht.
-2. Reicht das Geld nicht aus, wird eine Meldung ausgegeben.
+2. Reicht das Geld nicht aus, wird eine Meldung innerhald der Methode **'Auszahlung'** ausgegeben.
 3. Überweisen Sie in der Methode **'Uberweisung'** nur, wenn die Auszahlung **'true'** zurück gibt.
 
   
@@ -66,15 +66,15 @@ Damit die Kunden nachschauen können, welche Ein- und Auszahlungen getätigt wur
 Um diese zu realisieren, arbeiten Sie folgende Punkte ab: 
 
 1. Ein öffentliches **'transaktionen'** feld in der Klasse **'Bankkonto'** anlegen ``public List<string> transaktionen = new List<string>();``.
-2. Gehen Sie zur Methode **'Ueberweisungen'** und verändern Sie die Transaktionslisten des emfänger- und aktives-Konto wenn eine Transaktion möglich ist. nutzen Sie folgende formulierungen:
-   ```aktives_konto.transaktionen.Add($"{"Auszahlung",15}{"Kontonummer:"}{"-"+betrag_gesamt+"EUR",15}");```
+2. Gehen Sie zur Methode **'Ueberweisungen'** und verändern Sie die Transaktionslisten des emfänger- und aktives-Konto wenn eine Transaktion möglich ist. nutzen Sie folgende formulierungen:   
+   ```aktives_konto.transaktionen.Add($"{"Auszahlung",15}{"Kontonummer:"}{"-"+betrag_gesamt+"EUR",15}");```   
    ```empfaenger.transaktionen.Add($"{"Einzahlung",15}{"Kontonummer:"}{"+" + betrag + "EUR",15}");");```
    
 4. Erstellen Sie die öffentliche Methode **'TransaktionenAnzeigen'** in der **'Bankkonto'** Klasse. Diese Methode soll alle Transaktionen anzeigen.
 
   
 > :information_source: **Hinweise**:exclamation:
-> > + Beachten Sie, dass sich die Funktionalität von Aufgabe 2 erhalten bleibt.
+> + Beachten Sie, dass sich die Funktionalität von Aufgabe 2 erhalten bleibt.
 > + Nutzen Sie ggf. die [Informationen](https://github.com/GSO-SW/public_content_gso/wiki/Objektorientierung#datenkapselung-mit-eigenschaftsmethoden-in-c) aus dem Wiki.
 
   

@@ -3,7 +3,7 @@
 
 /// <summary>
 /// SAS Klassendesign Erweiterung
-/// Lernsituation 1 - Aufgabe 1
+/// Lernsituation 1 - Aufgabe 2
 /// Banking - App
 /// </summary>
 

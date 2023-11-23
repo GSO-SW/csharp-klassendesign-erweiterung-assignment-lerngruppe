@@ -8,4 +8,4 @@
 
 
 
-//Kopieren Sie den Code von Aufgabe 1
+//Kopieren Sie den Code von Aufgabe 2

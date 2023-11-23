@@ -5,16 +5,48 @@
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
+            "name": "Aufgabe1",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Aufgabe1_BankMenue/bin/Debug/net6.0/Aufgabe1_BankMenue.dll",
+            "program": "${workspaceFolder}/Aufgabe1_Ueberweisung/bin/Debug/net6.0/Aufgabe1_Ueberweisung.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Aufgabe1_BankMenue",
+            "cwd": "${workspaceFolder}/Aufgabe1_Ueberweisung",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
+            "name": "Aufgabe2",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/Aufgabe2_DispoEinrichten/bin/Debug/net6.0/Aufgabe2_DispoEinrichten.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Aufgabe2_DispoEinrichten",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
+            "name": "Aufgabe3",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/Aufgabe3_TransaktionsHistorie/bin/Debug/net6.0/Aufgabe3_TransaktionsHistorie.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Aufgabe3_TransaktionsHistorie",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {

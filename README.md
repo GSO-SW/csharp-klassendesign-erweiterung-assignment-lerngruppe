@@ -5,35 +5,14 @@
   </div>
 
   <div id="texts" style="display:inline; white-space:nowrap; float: right;"> 
-        <h1>Online-Banking-App SparBank AG</h1>
+        <h1>Online-Banking-App Erweiterung</h1>
 </div>
 
 
 ## :dart: Hauptauftrag 
-Sie haben den Auftrag erhalten, eine Konsolenanwendung für ein Online-Banking-System zu entwerfen, welche die Daten eines Kunden verarbeiten kann. Der Kunde möchte die Software anschließend in sein bereits vorhandenes Finanzsystem einbinden. Dieses Repository hat Herr Schneider für Sie aufgesetzt und die Anforderungen des Auftraggebers ausformuliert.
+Sie haben den Auftrag erhalten die von Ihnen erstellte Online-Banking-App zu erweitern. Die erwarteten Erweiterungen würden in folgendem UML-Klassendiagramm dokumentiert.
 
-### Anforderungen
-  
-Der Benutzer wählt in einem Menü zwischen den Punkten
-
-1. Geld einzahlen
-2. Geld abheben
-3. Kontostand
-4. Programm beenden
-
-Das Programm verarbeitet immer jeweils ein Kundenkonto.
-  
-**Rahmendbedingungen**
-
-|Framework Anforderungen | Anforderungen an die Benutzerfreundlichkeit| Externe Anforderungen|
-|----------|----------|----------|
-|Programmiert in C#|Programm und einzelne Optionen sind beliebig oft wiederholbar.|Alle gesetzlichen vorgaben werden eingehalten.|
-|Konsolenanwendung|Eine Fehleingabe führt zu einer erneuten Eingabeaufforderung.|Moralische und ethische Grundsätze sind einzuhalten.|
-|.NET 6 |Alle eingaben werden über die Tastatur gemacht.|-|
-|-|Die Konsole wird beim Verlassen des aktuellen Moduls gelöscht.|-|
-|-|Das Programm wird auf Befehl beendet.|-|
-
-  
+<img src="./Referenzen/Erweiterung_UML.png" width=50% >
   
 ## :bookmark_tabs: Informationsquelle   
 Das Informationsmaterial zur Aufgabe finden Sie [hier](https://github.com/GSO-SW/public_content_gso/tree/main/EducationMaterials/Csharp)   
@@ -41,103 +20,67 @@ Informationen zur Objektorientierung finden Sie [hier](https://github.com/GSO-SW
 
 ---
 
-### Aufgabe 1: Online-Banking-App Grundgerüst implementieren
+### Aufgabe 1: Überweisungen ermöglichen
 
-Um Ihnen den Einstieg zu erleichtern, hat Herr Schneider einen ersten Entwurf erstellt. Der Programmablaufplan zeigt zeigt das Menü der Inline-Banking-App und ermöglicht bereits das Einzahlen unf Abheben von Beträgen.
+Der bisherige Quellcode ist [hier](./Aufgabe1_Ueberweisung/Program.cs) hinterlegt. Sie sollen in diesem Schritt eine Überweisungsfunktion implementieren. Die folgende Checkliste soll Sie dabei Unterstützen. 
 
-<img src="./Referenzen/OnlinebankingMenu.png" width=50% >
-  
-**a)** Implementieren sie das von Herr Schneider entworfene Program.
-  
+1. Ein privates **'gebuehren'** feld in der Klasse **'Bank'** anlegen und mit **'0.01'**(1%) initialisieren.
+2. Den Menüpunkt **'6. Überweisen'** im Bankmenü hinzufügen.
+3. Den **'case "6":'** umwandeln und den Aufruf der Methode **'Ueberweisung();'** aufrufen.
+4. Erstellen Sie die Überweisungmethode. Folgende PAP soll sie dabei Unterstützen.
+
+<img src="./Referenzen/PAP_Ueberweisung.png" width=50% >
+
 > :information_source: **Hinweise**:exclamation:
-> + Beachten Sie, dass Sie die Ausgabe unter der gestrichelten Linie erzeugen müssen, um die Aufgabe zu bestehen.
-> + Da in der Testumgebung keine Konsole geöffnet ist, führt der Befehl ```Console.Clear()``` zu einem Fehler. Verwenden Sie den Befehl deshalb unter der Bedingung das nicht getestes wird. ```if (Environment.GetEnvironmentVariable("IsTesting") != "true") Console.Clear(); ```.
-> + Der Befehl ```Console.ReadKey()``` kann in der Testumgebung nicht verarbeitet werden. Nutzen Sie stattdessen ```Console.ReadLine()```.
-Beispiel Ausgabe/Ergebnis:
-
-<img src="./Referenzen/ErsterEntfurf-OnlineBanking.PNG" width=100% >     
+> + Beachten Sie, dass sich die Funktionalität des Boilerplate-Codes erhalten bleibt.
+> + Nutzen Sie ggf. die [Informationen](https://github.com/GSO-SW/public_content_gso/wiki/Objektorientierung#hauptkonzepte) aus dem Wiki.
 
 ---
   
-### Aufgabe 2: Online-Banking-App Bankkonto als Klass
+### Aufgabe 2: Dispositionsfunktion
 
-Nutzen Sie die Implementierung aus Aufgabe 1 um das Programm zu erweitern.   
-Das Bankkonto soll in Form einer Klasse (mit dem Namen **Bankkonto**) realisiert werden. Diese Klasse wird die Basis für die weitere Verwaltung von Bankkonten in der Anwendung sein.
-Die Klasse soll die folgenden Felder enthalten:
+Kopieren Sie die Implementierung aus Aufgabe1 in die [Aufgabe2](./Aufgabe2_DispoEinrichten/Program.cs) In diesem Schritt wird dem Bankkunden die Option gegeben, eine Disposition für ihr Konto einzurichten. Um dies zu erreichen, arbeiten Sie folgende Punkte ab: 
 
-- Kontonummer
-- Kontostand
+1. Ein öffentliches **'dispo'** feld in der Klasse **'Bankkonto'** anlegen und mit **'0'** initialisieren.
+2. Den Menüpunkt **'7. Dispo Einrichten'** im Bankmenü hinzufügen.
+3. Den **'case "7":'** umwandeln und den Aufruf der Methode **'DispoEinrichten();'** aufrufen.
+4. Erstellen Sie die private Dispositionsmethode.
+5. In der Dispositionsmethode fragen Sie den Nutzer nach seinem gewünschten Dispo und passen den **'dispo'**-Wert des aktiven Kontos an.
 
-**a)** Implementieren Sie das Program.
+**Auszahlung anpassen**
+1. Lassen Sie die Auszahlungsmethode der Bankkonten einen boolischen Wert zurückgeben. **'true'** wenn der Verfügungsrahmen ausreicht und **'false'** wenn das Geld für die Auszahlung oder überweisung nicht ausreicht.
+2. Reicht das Geld nicht aus, wird eine Meldung innerhald der Methode **'Auszahlung'** ausgegeben.
+3. Überweisen Sie in der Methode **'Uberweisung'** nur, wenn die Auszahlung **'true'** zurück gibt.
+
   
 > :information_source: **Hinweise**:exclamation:
 > + Beachten Sie, dass sich die Funktionalität von Aufgabe 1 erhalten bleibt.
 > + Nutzen Sie ggf. die [Informationen](https://github.com/GSO-SW/public_content_gso/wiki/Objektorientierung#hauptkonzepte) aus dem Wiki.
-
-
-Beispiel Ausgabe/Ergebnis:
-
-<img src="./Referenzen/ErsterEntfurf-OnlineBanking.PNG" width=100% >
   
 ---
 
-### Aufgabe 3: Online-Banking-App Felder anpassen
+### Aufgabe 3: Transaktionshistorie
 
 Nutzen Sie die Implementierung aus Aufgabe 2 um das Programm zu erweitern.   
-Passen Sie das Feld Kontonummer so an, dass nur positive Integerwerte gesetzt werden können. Bei negativen Werten soll eine Fehlermeldung in der Konsole ausgegeben werden.
+Damit die Kunden nachschauen können, welche Ein- und Auszahlungen getätigt wurden, wird eine Transaktionshistorie erstellt.
+Um diese zu realisieren, arbeiten Sie folgende Punkte ab: 
 
-**a)** Implementieren Sie das Program.
+1. Ein öffentliches **'transaktionen'** feld in der Klasse **'Bankkonto'** anlegen ``public List<string> transaktionen = new List<string>();``.
+2. Gehen Sie zur Methode **'Ueberweisungen'** und verändern Sie die Transaktionslisten des emfänger- und aktives-Konto wenn eine Transaktion möglich ist. nutzen Sie folgende formulierungen:   
+   ```aktives_konto.transaktionen.Add($"{"Auszahlung",15}{"Kontonummer:"}{"-"+betrag_gesamt+"EUR",15}");```   
+   ```empfaenger.transaktionen.Add($"{"Einzahlung",15}{"Kontonummer:"}{"+" + betrag + "EUR",15}");");```
+   
+4. Erstellen Sie die öffentliche Methode **'TransaktionenAnzeigen'** in der **'Bankkonto'** Klasse. Diese Methode soll alle Transaktionen anzeigen.
+
   
 > :information_source: **Hinweise**:exclamation:
-> + Beachten Sie, dass Sie die Ausgabe unter der gestrichelten Linie erzeugen müssen, um die Aufgabe zu bestehen.
+> + Beachten Sie, dass sich die Funktionalität von Aufgabe 2 erhalten bleibt.
 > + Nutzen Sie ggf. die [Informationen](https://github.com/GSO-SW/public_content_gso/wiki/Objektorientierung#datenkapselung-mit-eigenschaftsmethoden-in-c) aus dem Wiki.
 
-
-Beispiel Ausgabe/Ergebnis:
-<img src="./Referenzen/Eigenschaftenmethode-OnlineBanking.PNG" width=100% >
   
 ---
 
-### Aufgabe 4: Online-Banking-App Methoden
-
-Nutzen Sie die Implementierung aus Aufgabe 3 um das Programm zu erweitern. Definieren Sie in der Klasse **'Bankkonto'** die folgenden drei Methoden:
-
-**Klasse:** Bankkonto   
-    **Felder:**   
-    + kontonummer: int   
-    + kontostand: double = 0   
-    **Methoden:**   
-    + Einzahlung(einzahlungsbetrag: double): void   
-    + Auszahlung(abhebebetrag: double): void   
-    + Kontostand(): void   
-
-
-**a)** Realisieren Sie die Methoden in der Klasse **'Bankkonto'** und Beachten Sie dabei die übergebenen Datentypen.
-
-> :information_source: **Hinweise**:exclamation:
-> + Beachten Sie, dass Sie die Ausgabe unter der gestrichelten Linie erzeugen müssen, um die Aufgabe zu bestehen.
-> + Sie müssen das Dateiformat und die Namensgebung einhalten damit das Struktogramm Ihnen hier angezeigt wird.
-
----
-
-### Aufgabe 5: Online-Banking-App mehrere Konten
-
-Nutzen Sie die Implementierung aus Aufgabe 4 um das Programm zu erweitern.   
-In dieser Aufgabe sollen Sie eine Banking-App entwickeln, die mehrere Bankkonten verwaltet. Die App soll um folgende Optionen ergänzt werden:
-
-* Konto erstellen
-* Konto auswählen
-
-**a)** Implementieren Sie das Program.
-  
-> :information_source: **Hinweise**:exclamation:
-> + Beachten Sie, dass der Test die Klasse mit ihren genauen Bezeichnungen aufruft.
-> + Um die verschiedenen Konten abzuspeichern, können Sie generische Listen verwenden [(Information.)](https://github.com/GSO-SW/public_content_gso/wiki/Objektorientierung#datenkapselung-mit-eigenschaftsmethoden-in-c) 
-
-  
----
-  
-### Aufgabe 6: Arbeit einreichen
+### Aufgabe 4: Aufgabe abgeben
 
 1. In Visual Studio 2022 das Fenster "Git-Änderungen" aufrufen
 2. Eine kurze Beschreibung Ihrer Änderungen in die Textbox eingeben und "commit für alle" klicken
